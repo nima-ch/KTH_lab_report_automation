@@ -1,0 +1,33 @@
+#:kivy 2.1.0
+
+
+MainUi:
+
+<MainUi>:
+    orientation: "vertical"
+    padding: "20dp"
+    canvas.before:
+        Color:
+            rgba: .37, .37, .38, .4
+        Rectangle:
+            # self here refers to the widget
+            pos: self.pos
+            size: self.size    
+    Label:
+        text: root.main_message
+        font_size: 18
+        halign: 'center'
+        valign: 'middle'
+    ProgressBar:
+        id: progress_bar
+        max: 1
+        value: 0
+        size_hint: .8, .1
+        pos_hint: { "center_x": 0.5 }
+    Button:
+        text: "CREATE XLSX"
+        size_hint: None, None
+        size: "120dp", "60dp"
+        pos_hint: { "center_x": 0.5 }
+        on_press: root.on_create_click()
+        disabled: not root.rp_found

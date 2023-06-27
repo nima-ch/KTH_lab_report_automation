@@ -1,0 +1,8 @@
+Stoptime=system
+Emission=zeroorder
+Excitation=zeroorder
+Lamp=off
+Responsetime=250
+PmtGain=1
+Gate=off
+Delay=off
