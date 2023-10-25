@@ -1,0 +1,97 @@
+#:kivy 2.1.0
+
+
+MainUi:
+
+<MainUi>:
+    orientation: "vertical"
+    padding: "20dp"
+    canvas.before:
+        Color:
+            rgba: .37, .37, .38, .4
+        Rectangle:
+            # self here refers to the widget
+            pos: self.pos
+            size: self.size    
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint: None, None  # No automatic resizing
+        height: "30dp"
+        width: self.minimum_width  # Only as wide as it needs to be
+        pos_hint: {'center_x': .5}  # Centered horizontally
+        spacing: 20 
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: None, 1
+            width: dp(160)  # control this as needed
+            Label:
+                text: "Retention time"
+                size_hint_x: None
+                width: self.texture_size[0]
+            CheckBox:
+                active: root.retention_time_checked
+                on_active: root.update_checkbox_list('Retention Time', self.active)
+                size_hint_x: None
+                width: dp(40)  # control this as needed
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: None, 1
+            width: dp(90)
+            Label:
+                text: "Area"
+                size_hint_x: None
+                width: self.texture_size[0]
+            CheckBox:
+                active: root.area_checked
+                on_active: root.update_checkbox_list('Area', self.active)
+                size_hint_x: None
+                width: dp(40)
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: None, 1
+            width: dp(110)
+            Label:
+                text: "Amount"
+                size_hint_x: None
+                width: self.texture_size[0]
+            CheckBox:
+                active: root.amount_checked
+                on_active: root.update_checkbox_list('Amount', self.active)
+                size_hint_x: None
+                width: dp(40)
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: None, 1
+            width: dp(150)
+            Label:
+                text: "Amount/Area"
+                size_hint_x: None
+                width: self.texture_size[0]
+            CheckBox:
+                active: root.amount_area_checked
+                on_active: root.update_checkbox_list('Amount/Area', self.active)
+                size_hint_x: None
+                width: dp(40)
+    Label:
+        text: root.main_message
+        font_size: 18
+        halign: 'center'
+        valign: 'middle'
+    ProgressBar:
+        id: progress_bar
+        max: 1
+        value: 0
+        size_hint: .8, .1
+        pos_hint: { "center_x": 0.5 }
+    Button:
+        text: "CREATE XLSX"
+        size_hint: None, None
+        size: "120dp", "60dp"
+        pos_hint: { "center_x": 0.5 }
+        on_press: root.on_create_click()
+        disabled: not root.report_found

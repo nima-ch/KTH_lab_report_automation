@@ -1,7 +1,0 @@
-('D:\\maryam_proj\\app\\',
- None,
- [],
- 'DATA',
- [('logo.ico', 'D:\\maryam_proj\\app\\logo.ico', 'DATA'),
-  ('main.py', 'D:\\maryam_proj\\app\\main.py', 'DATA'),
-  ('xlsx.kv', 'D:\\maryam_proj\\app\\xlsx.kv', 'DATA')])
